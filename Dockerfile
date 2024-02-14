@@ -20,6 +20,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN echo "Instalando dependências do PHP"
 RUN docker-php-ext-install zip mysqli pdo_mysql imap gd intl
 
+RUN echo "Habilitando ACPU CLI"
+RUN pecl install apcu-5.1.23
+RUN docker-php-ext-enable apcu
+
 RUN echo "Habilitando otimizações no OPcache"
 RUN docker-php-ext-configure opcache --enable-opcache
 RUN docker-php-ext-install opcache
