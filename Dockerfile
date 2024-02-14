@@ -6,16 +6,18 @@ RUN echo "Atualizando dependências do sistema"
 RUN apt-get update
 
 RUN echo "Instalando dependências do sistema Linux"
-RUN apt-get install -y build-essential gcc g++ libc-client-dev libkrb5-dev libzip-dev zip unzip curl wget vim
+RUN apt-get install -y build-essential gcc g++ libc-client-dev libkrb5-dev libzip-dev \
+    libfreetype6-dev libjpeg62-turbo-dev libpng-dev zip unzip curl wget vim
 
 RUN echo "Limpando cache do APT-GET"
 RUN rm -r /var/lib/apt/lists/*
 
-RUN echo "Instalando a extensão IMAP"
+RUN echo "Configurando extensões do PHP"
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 RUN echo "Instalando dependências do PHP"
-RUN docker-php-ext-install zip mysqli pdo_mysql imap
+RUN docker-php-ext-install zip mysqli pdo_mysql imap gd
 
 RUN echo "Habilitando otimizações no OPcache"
 RUN docker-php-ext-configure opcache --enable-opcache
