@@ -2,19 +2,19 @@ version: '3.8'
 
 networks:
   osticketnet:
-    driver: default
+    driver: bridge
 
 services:
   web-server:
     container_name: osticket
     build: .
     restart: always
-    ports: "${APP_PORT}:80"
+    ports:
+      - "${APP_PORT}:80"
     volumes:
       - ./osticket:/var/www/html/osticket
       - ./docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
-      - ./docker/php/php.ini-development:/usr/local/etc/php/php.ini-development
-      - ./docker/php/php.ini-production:/usr/local/etc/php/php.ini-production
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
     networks:
       - osticketnet
   database:

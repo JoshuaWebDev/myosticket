@@ -15,7 +15,7 @@ echo "Configurando permissões de acesso ao diretório $workdir"
 
 if chmod -R 775 $workdir
 then
-    echo echo "Permissões de acesso ao diretório $workdir configuradas com sucesso!"
+    echo "Permissões de acesso ao diretório $workdir configuradas com sucesso!"
 else
     echo "Não foi possível configurar as permissões de acesso ao diretório $workdir"
 fi
