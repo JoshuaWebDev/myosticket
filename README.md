@@ -18,7 +18,7 @@ Access the project directory
 cd myosticket
 ```
 
-Download the latest version of the [osticket](https://osticket.com/download/) and copy to myosticket directory.
+Download the latest version of the [osticket](https://osticket.com/download/), rename the diretory to osticket and copy to myosticket directory.
 
 Execute the command
 
@@ -29,5 +29,5 @@ docker-compose up -d
 Execute the command
 
 ```
-docker exec -it install.sh
+docker exec -it osticket install.sh
 ```

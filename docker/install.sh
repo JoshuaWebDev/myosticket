@@ -11,6 +11,15 @@ else
     echo "Não foi possível configurar o usuário e grupo www-data"
 fi
 
+echo "Criando o arquivo de configuração (include/ost-config.php)"
+
+if cp upload/include/ost-sampleconfig.php upload/include/ost-config.php
+then
+    echo "Configurações criadas com sucesso!"
+else
+    echo "Não foi possível realizar as configurações"
+fi
+
 echo "Configurando permissões de acesso ao diretório $workdir"
 
 if chmod -R 775 $workdir
